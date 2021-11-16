@@ -109,8 +109,7 @@ Argo cd 접속
 ```
 kubectl get svc argocd-server -n argocd
 
-NAME            TYPE           CLUSTER-IP      EXTERNAL-IP                                                                                   
-argocd-server   LoadBalancer   10.100.67.150   [192.168.*.*]
+NAMESPACE     NAME                            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE    SELECTOR                                            argocd        service/argocd-server           LoadBalancer   10.233.35.79    <pending>     80:31843/TCP,443:30574/TCP   12m    app.kubernetes.io/name=argocd-server
 ```
 
 
@@ -192,7 +191,8 @@ wordpress-ing   <none>   *     [192.168.*.*]
 Prometheus, grafana 설치
 
 ```
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts 
+helm repo add grafana https://grafana.github.io/helm-charts 
 helm repo update
 ```
 
@@ -202,6 +202,12 @@ mkdir monitoring
 
 - [prometheus-values](monitoring/prom.yaml)
 - [grafana-values](monitoring/grafa.yaml)
+
+```
+helm install prometheus prometheus-community/prometheus -f prom.yaml -n prometheus
+helm install grafana grafana/grafana -f grafa.yaml -n prometheus
+
+```
 
 초기 로그인 정보
 
