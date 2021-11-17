@@ -147,7 +147,7 @@ Argo CD 설정
 
 Argo CD 배포
 
-![argo1](img/argo.png)
+![argo1](img/argo1.png)
 
 
 
